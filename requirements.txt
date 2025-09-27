@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+requests
+numpy
+opencv-python
+pillow
+pyzbar
+pdf2image
+beautifulsoup4
