@@ -9,7 +9,7 @@ import numpy as np
 import cv2
 from PIL import Image
 from pyzbar.pyzbar import decode as pyzbar_decode
-from pdf2image import convert_from_bytes
+#from pdf2image import convert_from_bytes
 from bs4 import BeautifulSoup
 
 # FastAPI specific imports
@@ -33,7 +33,7 @@ def load_image_from_bytes(file_bytes: bytes, filename: str) -> Image.Image:
     filename = filename.lower()
 
     # Handle PDF (Requires Poppler)
-    if filename.endswith(".pdf") or file_bytes[:4] == b"%PDF":
+    '''if filename.endswith(".pdf") or file_bytes[:4] == b"%PDF":
         try:
             pages = convert_from_bytes(file_bytes, dpi=PDF_DPI, first_page=1, last_page=1)
             if not pages:
@@ -42,7 +42,7 @@ def load_image_from_bytes(file_bytes: bytes, filename: str) -> Image.Image:
         except Exception as e:
             # This handles the case where Poppler is missing
             raise RuntimeError(f"PDF conversion failed (Is Poppler installed?): {e}")
-    
+    '''
     # Handle Image
     try:
         img = Image.open(file_stream).convert("RGB")
